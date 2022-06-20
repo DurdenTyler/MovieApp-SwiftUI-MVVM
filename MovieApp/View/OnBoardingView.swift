@@ -10,6 +10,7 @@ import SwiftUI
 struct OnBoardingView: View {
     // Устанавливаем текущий слайд
     @State var selectedSlide: Slide = SlideViewModel.shared.slides[0]
+    @State var nextView = false
     
     // Отключаем эффект оттягивания
     init() {
@@ -30,7 +31,7 @@ struct OnBoardingView: View {
                     .blur(radius: 2, opaque: true)
             }
             .ignoresSafeArea()
-
+            
             
             VStack {
                 Text("Вперед с агрегатором мира кино")
@@ -86,7 +87,7 @@ struct OnBoardingView: View {
                     
                 } else {
                     Button {
-                        //
+                        nextView.toggle()
                     } label: {
                         Text("Вперед")
                             .fontWeight(.bold)
@@ -99,17 +100,20 @@ struct OnBoardingView: View {
                     .padding(.top, 15)
                     .padding(.horizontal)
                 }
-
+                
             }
-    }
-    }
-        
-        func getIndex()-> Int {
-            let index = SlideViewModel.shared.slides.firstIndex { (slide)-> Bool in
-                return selectedSlide.id == slide.id
-            } ?? 0
-            return index
         }
+        .fullScreenCover(isPresented: $nextView) {
+            AuthView()
+        }
+    }
+    
+    func getIndex()-> Int {
+        let index = SlideViewModel.shared.slides.firstIndex { (slide)-> Bool in
+            return selectedSlide.id == slide.id
+        } ?? 0
+        return index
+    }
 }
 
 struct OnBoardingView_Previews: PreviewProvider {

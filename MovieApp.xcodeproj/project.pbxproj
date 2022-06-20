@@ -15,6 +15,9 @@
 		DD7236D22840DCB6004D98AC /* SlideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7236D12840DCB6004D98AC /* SlideViewModel.swift */; };
 		DD7236D52841F2A5004D98AC /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7236D42841F2A5004D98AC /* OnBoardingView.swift */; };
 		DD7236D72842051A004D98AC /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7236D62842051A004D98AC /* PageControl.swift */; };
+		DD7825462860110B00B61E4D /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7825452860110B00B61E4D /* AuthView.swift */; };
+		DD78254A28603D5600B61E4D /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD78254928603D5600B61E4D /* SignIn.swift */; };
+		DD78254C28603D6000B61E4D /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD78254B28603D6000B61E4D /* SignUp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		DD7236D12840DCB6004D98AC /* SlideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewModel.swift; sourceTree = "<group>"; };
 		DD7236D42841F2A5004D98AC /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		DD7236D62842051A004D98AC /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		DD7825452860110B00B61E4D /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		DD78254928603D5600B61E4D /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		DD78254B28603D6000B61E4D /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +105,27 @@
 			isa = PBXGroup;
 			children = (
 				DD7236D42841F2A5004D98AC /* OnBoardingView.swift */,
+				DD7825452860110B00B61E4D /* AuthView.swift */,
+				DD78254728603D1D00B61E4D /* Components */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DD78254728603D1D00B61E4D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DD78254828603D3F00B61E4D /* AuthComponents */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DD78254828603D3F00B61E4D /* AuthComponents */ = {
+			isa = PBXGroup;
+			children = (
+				DD78254928603D5600B61E4D /* SignIn.swift */,
+				DD78254B28603D6000B61E4D /* SignUp.swift */,
+			);
+			path = AuthComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,11 +199,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD7236D22840DCB6004D98AC /* SlideViewModel.swift in Sources */,
+				DD7825462860110B00B61E4D /* AuthView.swift in Sources */,
 				DD7236CF2840DB63004D98AC /* Slide.swift in Sources */,
 				DD7236D72842051A004D98AC /* PageControl.swift in Sources */,
 				DD7236D52841F2A5004D98AC /* OnBoardingView.swift in Sources */,
 				DD7236C22840D5FC004D98AC /* AppView.swift in Sources */,
 				DD7236C02840D5FC004D98AC /* MovieAppApp.swift in Sources */,
+				DD78254C28603D6000B61E4D /* SignUp.swift in Sources */,
+				DD78254A28603D5600B61E4D /* SignIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
