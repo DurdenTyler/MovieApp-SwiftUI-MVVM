@@ -18,7 +18,7 @@ struct SignIn: View {
             Text("Войти")
                 .font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(Color("dark"))
+                .foregroundColor(.white)
                 .kerning(1.9)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
@@ -27,15 +27,15 @@ struct SignIn: View {
                     .fontWeight(.bold)
                     .foregroundColor(.gray)
                 
-                TextField("ijustine@gmail.com", text: $email)
+                TextField(" ijustine@gmail.com", text: $email)
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(Color("dark"))
                     .padding(.top, 5)
-                
-                
-                Divider()
+                    .padding(.bottom, 5)
+                    .background(.white)
+                    .cornerRadius(5)
             }
-            .padding(.top, 25)
+            .padding(.top, 20)
             
             
             VStack(alignment: .leading, spacing: 8) {
@@ -43,13 +43,13 @@ struct SignIn: View {
                     .fontWeight(.bold)
                     .foregroundColor(.gray)
                 
-                SecureField("123456", text: $password)
+                SecureField(" 123456", text: $password)
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(Color("dark"))
                     .padding(.top, 5)
-                
-                
-                Divider()
+                    .padding(.bottom, 5)
+                    .background(.white)
+                    .cornerRadius(5)
             }
             .padding(.top, 20)
             

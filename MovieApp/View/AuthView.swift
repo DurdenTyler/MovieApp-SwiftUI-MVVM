@@ -30,17 +30,25 @@ struct AuthView: View {
                 return AnyView(
                     
                     ZStack {
-                        Circle()
-                            .fill(Color("dark"))
-                            .offset(x: screen.width / 2, y: -height / 1.3)
+                        Image("solo")
+                            .resizable().offset(x: 0, y: 60)
+                            .clipShape(Circle())
+                            .overlay(Circle().strokeBorder(Color("dark"), lineWidth: 10))
+                            .frame(width: 310, height: 410)
+                            .offset(x: screen.width / 2, y: -height / 1.5)
                         
-                        Circle()
-                            .fill(Color("dark"))
+                        Image("rental")
+                            .resizable().offset(x: 25, y: 110)
+                            .clipShape(Circle())
+                            .overlay(Circle().strokeBorder(Color("dark"), lineWidth: 10))
                             .offset(x: -screen.width / 2, y: -height / 1.5)
                         
-                        Circle()
-                            .fill(Color("lightblue"))
-                            .offset(y: -height / 1.3)
+                        Image("toystory")
+                            .resizable().offset(x: 0, y: 30)
+                            .clipShape(Circle())
+                            .overlay(Circle().strokeBorder(Color("almostwhite"), lineWidth: 10))
+                            .frame(width: 310, height: 410)
+                            .offset(y: -height / 1.58)
                             .rotationEffect(.init(degrees: -5))
                         
                     }
@@ -68,18 +76,18 @@ struct AuthView: View {
         }
         .overlay(
             HStack {
-                Text(showSignUp ? "Еще не с нами?" : "Уже с нами?")
+                Text(showSignUp ? "Уже с нами?" : "Еще не с нами?")
                     .fontWeight(.bold)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("lightblue2"))
                 
                 Button {
                     withAnimation {
                         showSignUp.toggle()
                     }
                 } label: {
-                    Text(showSignUp ? "Регистрируйся" : "Войти")
+                    Text(showSignUp ? "Войти" : "Регистрируйся")
                         .fontWeight(.bold)
-                        .foregroundColor(Color("lightblue"))
+                        .foregroundColor(.white)
                 }
 
             }
@@ -88,24 +96,35 @@ struct AuthView: View {
         )
         .background(
             
-            HStack {
-                Circle()
-                    .fill(Color("lightblue"))
-                    .frame(width: 70, height: 70)
-                    .offset(x: -20, y: screen.height < 750 ? -20 : -30)
+            ZStack {
+                Image("soul")
+                    .resizable().offset(x: 75, y: 18)
+                    .clipShape(Circle())
+                    .overlay(Circle().strokeBorder(Color("almostwhite"), lineWidth: 10))
+                    .frame(width: 320, height: 410)
+                    .offset(x: 140, y: 70)
                 
-                Spacer()
+                Image("PalmSprings")
+                    .resizable().offset(x: -100, y: 0)
+                    .clipShape(Circle())
+                    .overlay(Circle().strokeBorder(Color("almostwhite"), lineWidth: 10))
+                    .frame(width: 220, height: 310)
+                    .offset(x: -130, y: 100)
                 
-                Circle()
-                    .fill(Color("dark"))
-                    .frame(width: 110, height: 110)
-                    .offset(x: 30, y: -20)
+                Image("true")
+                    .resizable()
+                    .clipShape(Circle())
+                    .overlay(Circle().strokeBorder(Color("dark"), lineWidth: 10))
+                    .frame(width: 320, height: 410)
+                    .offset(x: 0, y: 70)
             }
                 .offset(y: safeArea.bottom + 70)
             
             ,alignment: .bottom
         
         )
+        .background(Color("lightblue2").ignoresSafeArea())
+        
     }
 }
 

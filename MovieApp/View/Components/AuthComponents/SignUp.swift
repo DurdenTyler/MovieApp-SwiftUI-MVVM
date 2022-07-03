@@ -19,7 +19,7 @@ struct SignUp: View {
             Text("Зарегистрироваться")
                 .font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(Color("dark"))
+                .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             VStack(alignment: .leading, spacing: 8) {
@@ -27,15 +27,16 @@ struct SignUp: View {
                     .fontWeight(.bold)
                     .foregroundColor(.gray)
                 
-                TextField("ijustine@gmail.com", text: $email)
+                TextField(" ijustine@gmail.com", text: $email)
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(Color("dark"))
+                    .background(.white)
                     .padding(.top, 5)
-                
-                
-                Divider()
+                    .padding(.bottom, 5)
+                    .background(.white)
+                    .cornerRadius(5)
             }
-            .padding(.top, 25)
+            .padding(.top, 20)
             
             
             VStack(alignment: .leading, spacing: 8) {
@@ -43,30 +44,31 @@ struct SignUp: View {
                     .fontWeight(.bold)
                     .foregroundColor(.gray)
                 
-                SecureField("123456", text: $password)
+                SecureField(" 123456", text: $password)
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(Color("dark"))
                     .padding(.top, 5)
-                
-                
-                Divider()
+                    .padding(.bottom, 5)
+                    .background(.white)
+                    .cornerRadius(5)
+
             }
-            .padding(.top, 20)
+            .padding(.top, 15)
             
             VStack(alignment: .leading, spacing: 8) {
                 Text("Подтвердите пароль")
                     .fontWeight(.bold)
                     .foregroundColor(.gray)
                 
-                SecureField("123456", text: $confirmPassword)
+                SecureField(" 123456", text: $confirmPassword)
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(Color("dark"))
                     .padding(.top, 5)
-                
-                
-                Divider()
+                    .padding(.bottom, 5)
+                    .background(.white)
+                    .cornerRadius(5)
             }
-            .padding(.top, 20)
+            .padding(.top, 15)
             
             
             Button {
