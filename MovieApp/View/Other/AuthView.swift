@@ -30,28 +30,30 @@ struct AuthView: View {
                 return AnyView(
                     
                     ZStack {
+                        Image("starwars3")
+                            .resizable().offset(x: -48, y: 10)
+                            .clipShape(Circle())
+                            .overlay(Circle().strokeBorder(Color("dark"), lineWidth: 10))
+                            .frame(width: 310, height: 410)
+                            .offset(x: screen.width / 2.4, y: -height / 1.55)
+                        
+                        Image("starwars3")
+                            .resizable().offset(x: 52, y: 108)
+                            .clipShape(Circle())
+                            .overlay(Circle().strokeBorder(Color("dark"), lineWidth: 10))
+                            .offset(x: -screen.width / 2, y: -height / 1.2)
+                        
                         Image("solo")
-                            .resizable().offset(x: 0, y: 60)
+                            .resizable().offset(x: -8, y: 70)
                             .clipShape(Circle())
                             .overlay(Circle().strokeBorder(Color("dark"), lineWidth: 10))
                             .frame(width: 310, height: 410)
-                            .offset(x: screen.width / 2, y: -height / 1.5)
-                        
-                        Image("rental")
-                            .resizable().offset(x: 25, y: 110)
-                            .clipShape(Circle())
-                            .overlay(Circle().strokeBorder(Color("dark"), lineWidth: 10))
-                            .offset(x: -screen.width / 2, y: -height / 1.5)
-                        
-                        Image("toystory")
-                            .resizable().offset(x: 0, y: 30)
-                            .clipShape(Circle())
-                            .overlay(Circle().strokeBorder(Color("almostwhite"), lineWidth: 10))
-                            .frame(width: 310, height: 410)
-                            .offset(y: -height / 1.58)
+                            .offset(y: -height / 1.45)
                             .rotationEffect(.init(degrees: -5))
                         
                     }
+                        .blur(radius: 3)
+                    
                 
                 )
             }
@@ -97,33 +99,35 @@ struct AuthView: View {
         .background(
             
             ZStack {
-                Image("soul")
-                    .resizable().offset(x: 75, y: 18)
+                Image("true2")
+                    .resizable().offset(x: -75, y: 10)
                     .clipShape(Circle())
                     .overlay(Circle().strokeBorder(Color("almostwhite"), lineWidth: 10))
                     .frame(width: 320, height: 410)
                     .offset(x: 140, y: 70)
                 
-                Image("PalmSprings")
-                    .resizable().offset(x: -100, y: 0)
+                Image("true3")
+                    .resizable().offset(x: -12, y: -90)
                     .clipShape(Circle())
                     .overlay(Circle().strokeBorder(Color("almostwhite"), lineWidth: 10))
                     .frame(width: 220, height: 310)
-                    .offset(x: -130, y: 100)
+                    .offset(x: -130, y: 130)
                 
                 Image("true")
                     .resizable()
                     .clipShape(Circle())
-                    .overlay(Circle().strokeBorder(Color("dark"), lineWidth: 10))
+                    .overlay(Circle().strokeBorder(Color("almostwhite"), lineWidth: 10))
                     .frame(width: 320, height: 410)
-                    .offset(x: 0, y: 70)
+                    .offset(x: 0, y: 110)
             }
                 .offset(y: safeArea.bottom + 70)
+                .blur(radius: 3)
             
             ,alignment: .bottom
         
         )
-        .background(Color("lightblue2").ignoresSafeArea())
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(.white).blur(radius: 3).ignoresSafeArea())
         
     }
 }

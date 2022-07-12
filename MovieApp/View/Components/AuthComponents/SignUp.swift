@@ -19,13 +19,13 @@ struct SignUp: View {
             Text("Зарегистрироваться")
                 .font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(.white)
+                .foregroundColor(Color("dark"))
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             VStack(alignment: .leading, spacing: 8) {
                 Text("Логин")
                     .fontWeight(.bold)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("dark"))
                 
                 TextField(" ijustine@gmail.com", text: $email)
                     .font(.system(size: 20, weight: .semibold))
@@ -42,7 +42,7 @@ struct SignUp: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Пароль")
                     .fontWeight(.bold)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("dark"))
                 
                 SecureField(" 123456", text: $password)
                     .font(.system(size: 20, weight: .semibold))
@@ -58,7 +58,7 @@ struct SignUp: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Подтвердите пароль")
                     .fontWeight(.bold)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("dark"))
                 
                 SecureField(" 123456", text: $confirmPassword)
                     .font(.system(size: 20, weight: .semibold))

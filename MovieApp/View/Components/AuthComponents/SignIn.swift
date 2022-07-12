@@ -11,21 +11,21 @@ struct SignIn: View {
     
     @State var email = ""
     @State var password = ""
-    
+    @State var toMainTabBar = false
     
     var body: some View {
         VStack {
             Text("Войти")
                 .font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(.white)
+                .foregroundColor(Color("lightblue2"))
                 .kerning(1.9)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             VStack(alignment: .leading, spacing: 8) {
                 Text("Логин")
                     .fontWeight(.bold)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("lightblue2"))
                 
                 TextField(" ijustine@gmail.com", text: $email)
                     .font(.system(size: 20, weight: .semibold))
@@ -41,7 +41,7 @@ struct SignIn: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Пароль")
                     .fontWeight(.bold)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("lightblue2"))
                 
                 SecureField(" 123456", text: $password)
                     .font(.system(size: 20, weight: .semibold))
@@ -54,7 +54,7 @@ struct SignIn: View {
             .padding(.top, 20)
             
             Button {
-                ///
+                print("Забыли пароль")
             } label: {
                 Text("Забыли пароль?")
                     .fontWeight(.bold)
@@ -65,18 +65,21 @@ struct SignIn: View {
             
             
             Button {
-                ///
+                toMainTabBar.toggle()
             } label: {
                 Image(systemName: "arrow.right")
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(.white)
                     .padding()
-                    .background(Color("dark"))
+                    .background(Color("lightblue2"))
                     .clipShape(Circle())
                     .shadow(color: Color("lightblue").opacity(0.6), radius: 5, x: 0, y: 0)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.top, 10)
+            .fullScreenCover(isPresented: $toMainTabBar) {
+                MainTabBarView()
+            }
 
 
         }
