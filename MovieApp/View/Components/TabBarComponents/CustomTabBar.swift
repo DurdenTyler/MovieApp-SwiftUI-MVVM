@@ -78,6 +78,6 @@ struct CustomTabBar: View {
 
 struct CustomTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabBarView()
+        MainTabBarView(mainTabBarViewModel: MainTabBarViewModel(user: AuthService.shared.currentUser!))
     }
 }

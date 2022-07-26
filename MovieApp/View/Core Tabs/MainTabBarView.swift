@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct MainTabBarView: View {
-    init() {
+    
+    var mainTabBarViewModel: MainTabBarViewModel
+    
+    init(mainTabBarViewModel: MainTabBarViewModel) {
         UITabBar.appearance().isHidden = true
+        self.mainTabBarViewModel = mainTabBarViewModel
     }
     
     @State var currentTab: Tab = .home
@@ -31,6 +35,6 @@ struct MainTabBarView: View {
 
 struct MainTabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabBarView()
+        MainTabBarView(mainTabBarViewModel: MainTabBarViewModel(user: AuthService.shared.currentUser!))
     }
 }

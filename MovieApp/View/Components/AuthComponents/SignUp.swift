@@ -13,19 +13,23 @@ struct SignUp: View {
     @State var password = ""
     @State var confirmPassword = ""
     
+    @Binding var toMainTabBar: Bool
+    @Binding var showAlert: Bool
+    @Binding var alertMessage: String
+    
     
     var body: some View {
         VStack {
             Text("Зарегистрироваться")
                 .font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(Color("dark"))
+                .foregroundColor(Color("lightblue2"))
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             VStack(alignment: .leading, spacing: 8) {
                 Text("Логин")
                     .fontWeight(.bold)
-                    .foregroundColor(Color("dark"))
+                    .foregroundColor(Color("lightblue2"))
                 
                 TextField(" ijustine@gmail.com", text: $email)
                     .font(.system(size: 20, weight: .semibold))
@@ -42,7 +46,7 @@ struct SignUp: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Пароль")
                     .fontWeight(.bold)
-                    .foregroundColor(Color("dark"))
+                    .foregroundColor(Color("lightblue2"))
                 
                 SecureField(" 123456", text: $password)
                     .font(.system(size: 20, weight: .semibold))
@@ -58,7 +62,7 @@ struct SignUp: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Подтвердите пароль")
                     .fontWeight(.bold)
-                    .foregroundColor(Color("dark"))
+                    .foregroundColor(Color("lightblue2"))
                 
                 SecureField(" 123456", text: $confirmPassword)
                     .font(.system(size: 20, weight: .semibold))
@@ -72,15 +76,38 @@ struct SignUp: View {
             
             
             Button {
-                ///
+                guard password.count >= 4 else {
+                    self.alertMessage = "Пароль должен быть длиннее"
+                    self.showAlert.toggle()
+                    return
+                }
+                guard password == confirmPassword else {
+                    self.alertMessage = "Проверочный пароль должен совпадать"
+                    self.showAlert.toggle()
+                    return
+                }
+                
+                AuthService.shared.signUp(email: email, password: password) { result in
+                    switch result {
+                    case .success(let user):
+                        alertMessage = "Вы успешно зарегистрированы на почту: \(user.email!)"
+                        showAlert.toggle()
+                        self.email = ""
+                        self.password = ""
+                        self.confirmPassword = ""
+                    case .failure(let error ):
+                        alertMessage = "Ошибка регистрации \(error.localizedDescription)"
+                        showAlert.toggle()
+                    }
+                }
             } label: {
                 Image(systemName: "arrow.right")
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(.white)
                     .padding()
-                    .background(Color("dark"))
+                    .background(Color("lightblue2"))
                     .clipShape(Circle())
-                    .shadow(color: Color("lightblue").opacity(0.6), radius: 5, x: 0, y: 0)
+                    .shadow(color: Color("lightblue2").opacity(0.6), radius: 5, x: 0, y: 0)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.top, 10)
@@ -89,10 +116,20 @@ struct SignUp: View {
         }
         .padding()
     }
-}
-
-struct SignUp_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUp()
+    
+    private func signIn(email: String, password: String) {
+        AuthService.shared.signIn(email: email, password: password) { result in
+            switch result {
+            case .success(_):
+                
+                toMainTabBar.toggle()
+                
+            case .failure(let error):
+                
+                alertMessage = "Ошибка авторизации: \(error.localizedDescription)"
+                showAlert.toggle()
+                
+            }
+        }
     }
 }

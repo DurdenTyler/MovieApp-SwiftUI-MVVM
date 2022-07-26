@@ -13,6 +13,10 @@ struct AuthView: View {
     
     @State var showSignUp = false
     
+    @State var showAlert = false
+    @State var alertMessage = ""
+    @State var toMainTabBar = false
+    
     
     var body: some View {
         VStack {
@@ -65,10 +69,10 @@ struct AuthView: View {
             
             ZStack {
                 if showSignUp {
-                    SignUp()
+                    SignUp(toMainTabBar: $toMainTabBar, showAlert: $showAlert, alertMessage: $alertMessage)
                         .transition(.move(edge: .trailing))
                 } else {
-                    SignIn()
+                    SignIn(toMainTabBar: $toMainTabBar, showAlert: $showAlert, alertMessage: $alertMessage)
                         .transition(.move(edge: .trailing))
                 }
                 
@@ -128,6 +132,13 @@ struct AuthView: View {
         )
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.white).blur(radius: 3).ignoresSafeArea())
+        .alert(Text(alertMessage), isPresented: $showAlert) {
+            Text("Ok")
+        }
+        .fullScreenCover(isPresented: $toMainTabBar) {
+            let mainTabBarViewModel = MainTabBarViewModel(user: AuthService.shared.currentUser!)
+            MainTabBarView(mainTabBarViewModel: mainTabBarViewModel)
+        }
         
     }
 }

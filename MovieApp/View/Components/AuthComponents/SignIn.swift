@@ -11,7 +11,10 @@ struct SignIn: View {
     
     @State var email = ""
     @State var password = ""
-    @State var toMainTabBar = false
+    
+    @Binding var toMainTabBar: Bool
+    @Binding var showAlert: Bool
+    @Binding var alertMessage: String
     
     var body: some View {
         VStack {
@@ -65,7 +68,19 @@ struct SignIn: View {
             
             
             Button {
-                toMainTabBar.toggle()
+                AuthService.shared.signIn(email: email, password: password) { result in
+                    switch result {
+                    case .success(_):
+                        
+                        toMainTabBar.toggle()
+                        
+                    case .failure(let error):
+                        
+                        alertMessage = "Ошибка авторизации: \(error.localizedDescription)"
+                        showAlert.toggle()
+                        
+                    }
+                }
             } label: {
                 Image(systemName: "arrow.right")
                     .font(.system(size: 24, weight: .bold))
@@ -73,22 +88,13 @@ struct SignIn: View {
                     .padding()
                     .background(Color("lightblue2"))
                     .clipShape(Circle())
-                    .shadow(color: Color("lightblue").opacity(0.6), radius: 5, x: 0, y: 0)
+                    .shadow(color: Color("lightblue2").opacity(0.6), radius: 5, x: 0, y: 0)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.top, 10)
-            .fullScreenCover(isPresented: $toMainTabBar) {
-                MainTabBarView()
-            }
 
 
         }
         .padding()
-    }
-}
-
-struct SignIn_Previews: PreviewProvider {
-    static var previews: some View {
-        SignIn()
     }
 }
